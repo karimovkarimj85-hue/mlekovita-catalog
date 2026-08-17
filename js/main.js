@@ -166,9 +166,8 @@ function renderProductPage() {
     "beforeend",
     `
     <section class="pdp__grid">
-      <figure class="lens" data-tone="${item.tone}" style="--zoom:${item.zoom || 1}">
+      <figure class="shot-lg" data-tone="${item.tone}" style="--zoom:${item.zoom || 1}">
         <img src="${item.image}" alt="${item.alt}" />
-        <span class="lens__glass" aria-hidden="true"></span>
       </figure>
       <div class="pdp__info">
         <span class="tag">${item.tag}</span>
@@ -197,26 +196,6 @@ function renderProductPage() {
     </section>
   `
   );
-
-  const lens = root.querySelector(".lens");
-  const glass = root.querySelector(".lens__glass");
-  const img = root.querySelector(".lens img");
-  if (lens && glass && img && !matchMedia("(pointer: coarse)").matches) {
-    lens.addEventListener("mousemove", (event) => {
-      const rect = lens.getBoundingClientRect();
-      const x = ((event.clientX - rect.left) / rect.width) * 100;
-      const y = ((event.clientY - rect.top) / rect.height) * 100;
-      glass.style.opacity = "1";
-      glass.style.left = `${x}%`;
-      glass.style.top = `${y}%`;
-      glass.style.backgroundImage = `url("${item.image}")`;
-      glass.style.backgroundSize = "220%";
-      glass.style.backgroundPosition = `${x}% ${y}%`;
-    });
-    lens.addEventListener("mouseleave", () => {
-      glass.style.opacity = "0";
-    });
-  }
 
   document.getElementById("share-btn")?.addEventListener("click", async () => {
     const url = location.href;
