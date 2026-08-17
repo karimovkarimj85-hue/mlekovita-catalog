@@ -20,7 +20,7 @@ function setFavs(ids) {
 }
 
 function goTo(href) {
-  if (!wipe) {
+  if (!wipe || document.documentElement.classList.contains("is-phone")) {
     location.href = href;
     return;
   }
@@ -214,6 +214,49 @@ function renderProductPage() {
   });
 }
 
+function setupPhone() {
+  if (!document.documentElement.classList.contains("is-phone")) return;
+  document.body.classList.add("is-phone");
+  document.querySelectorAll(".phone-pill").forEach((el) => {
+    el.hidden = false;
+  });
+
+  if (!document.querySelector(".phone-dock")) {
+    const onProduct = Boolean(document.getElementById("product-page"));
+    const catalogHref = onProduct ? "./index.html#products" : "#products";
+    document.body.insertAdjacentHTML(
+      "beforeend",
+      `
+      <nav class="phone-dock" aria-label="Быстрые действия">
+        <a href="${catalogHref}">Каталог</a>
+        <a href="tel:+998950160330">Звонок</a>
+        <a class="phone-dock__wa" href="https://wa.me/998950160330" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    `
+    );
+  }
+
+  if (!sessionStorage.getItem("mlekovita-phone-hello") && !document.querySelector(".phone-toast")) {
+    document.body.insertAdjacentHTML(
+      "beforeend",
+      `
+      <div class="phone-toast" role="status">
+        <p><strong>Вы открыли каталог с телефона.</strong> Листайте карточки, жмите «Подробнее» или сразу пишите в WhatsApp.</p>
+        <button type="button" class="phone-toast__ok">Понятно</button>
+      </div>
+    `
+    );
+    const toast = document.querySelector(".phone-toast");
+    const close = () => {
+      toast?.classList.add("is-out");
+      sessionStorage.setItem("mlekovita-phone-hello", "1");
+      setTimeout(() => toast?.remove(), 280);
+    };
+    toast?.querySelector(".phone-toast__ok")?.addEventListener("click", close);
+    setTimeout(close, 7000);
+  }
+}
+
 bindMenu();
 bindForm();
 bindFavs();
@@ -222,3 +265,4 @@ bindFilters();
 renderCatalog();
 renderProductPage();
 observeReveal();
+setupPhone();

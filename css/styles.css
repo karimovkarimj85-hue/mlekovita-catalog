@@ -157,6 +157,22 @@ textarea {
   font-size: 11px;
 }
 
+.phone-pill {
+  margin-left: auto;
+  margin-right: 8px;
+  border-radius: 999px;
+  padding: 5px 10px;
+  background: var(--chocolate);
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+html.is-phone .phone-pill {
+  display: inline-flex;
+}
+
 .menu {
   display: flex;
   align-items: center;
@@ -916,6 +932,96 @@ textarea {
     max-width: 380px;
     margin-inline: auto;
   }
+}
+
+html.is-phone .wa-float,
+html.is-phone .wipe {
+  display: none;
+}
+
+html.is-phone body {
+  padding-bottom: calc(88px + env(safe-area-inset-bottom));
+}
+
+html.is-phone .hero__actions .btn,
+html.is-phone .card .btn,
+html.is-phone .pdp__actions .btn {
+  min-height: 48px;
+}
+
+html.is-phone .products {
+  grid-template-columns: 1fr;
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+.phone-dock {
+  display: none;
+}
+
+html.is-phone .phone-dock {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(10px + env(safe-area-inset-bottom));
+  z-index: 20;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 22px;
+  background: rgba(56, 40, 24, 0.94);
+  box-shadow: 0 16px 40px rgba(56, 40, 24, 0.28);
+}
+
+.phone-dock a {
+  display: grid;
+  place-items: center;
+  min-height: 44px;
+  border-radius: 16px;
+  color: var(--paper);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.phone-dock__wa {
+  background: #25d366;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.phone-toast {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(86px + env(safe-area-inset-bottom));
+  z-index: 21;
+  background: var(--white);
+  color: var(--ink);
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  animation: rise 0.45s ease both;
+}
+
+.phone-toast p {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.phone-toast__ok {
+  width: 100%;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px;
+  background: var(--chocolate);
+  color: var(--gold);
+}
+
+.phone-toast.is-out {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: 0.25s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
