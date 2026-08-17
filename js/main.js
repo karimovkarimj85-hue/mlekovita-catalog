@@ -69,14 +69,14 @@ function cardHtml(item, index) {
         <img src="${item.image}" alt="${item.alt}" />
       </a>
       <div class="card__body">
-        <h3>${item.name}</h3>
+        <h3><span class="card__name">Сливки </span>Mlekovita</h3>
         <p class="card__meta">${item.fat} · ${item.volume}</p>
         <span class="tag">${item.tag}</span>
         <div class="price">
           <strong>${item.price}</strong>
-          <span>сум / шт<br />с НДС</span>
+          <span>сум/шт <small>с НДС</small></span>
         </div>
-        <a class="btn btn--gold btn--full js-open" href="./product.html?id=${item.id}" data-href="./product.html?id=${item.id}">Подробнее</a>
+        <a class="btn btn--gold btn--full js-open" href="./product.html?id=${item.id}" data-href="./product.html?id=${item.id}"><span class="btn__full">Подробнее</span><span class="btn__short">Ещё</span></a>
       </div>
     </article>
   `;

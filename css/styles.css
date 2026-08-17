@@ -532,6 +532,16 @@ html.is-phone .phone-pill {
   margin-top: auto;
 }
 
+.card .btn__short {
+  display: none;
+}
+
+.price small {
+  display: block;
+  font-size: 10px;
+  color: var(--gold-3);
+}
+
 .card h3 {
   font-size: 20px;
 }
@@ -926,14 +936,6 @@ html.is-phone .phone-pill {
   }
 }
 
-@media (max-width: 640px) {
-  .products {
-    grid-template-columns: 1fr;
-    max-width: 380px;
-    margin-inline: auto;
-  }
-}
-
 html.is-phone .wa-float,
 html.is-phone .wipe {
   display: none;
@@ -944,15 +946,140 @@ html.is-phone body {
 }
 
 html.is-phone .hero__actions .btn,
-html.is-phone .card .btn,
 html.is-phone .pdp__actions .btn {
   min-height: 48px;
 }
 
+@media (max-width: 700px) {
+  .products {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    max-width: none;
+  }
+
+  .card {
+    border-radius: 16px;
+  }
+
+  .card[data-tone="green"],
+  .card[data-tone="red"],
+  .card[data-tone="navy"] {
+    border-top-width: 4px;
+  }
+
+  .card__media {
+    aspect-ratio: 1 / 1;
+  }
+
+  .card__media img {
+    padding: 6px;
+  }
+
+  .card__body {
+    padding: 8px;
+    gap: 4px;
+  }
+
+  .card h3 {
+    font-size: 13px;
+  }
+
+  .card__name {
+    display: none;
+  }
+
+  .card__meta,
+  .tag {
+    font-size: 10px;
+  }
+
+  .tag {
+    padding: 2px 7px;
+  }
+
+  .price {
+    padding: 6px 8px;
+    border-radius: 10px;
+  }
+
+  .price strong {
+    font-size: 15px;
+  }
+
+  .price span,
+  .price small {
+    font-size: 9px;
+  }
+
+  .price small {
+    display: none;
+  }
+
+  .card .btn {
+    padding: 8px 6px;
+    font-size: 12px;
+    min-height: 36px;
+  }
+
+  .card .btn__full {
+    display: none;
+  }
+
+  .card .btn__short {
+    display: inline;
+  }
+
+  .catalog {
+    padding: 16px 0 40px;
+  }
+
+  .catalog__head {
+    padding: 16px 14px;
+    margin-bottom: 12px;
+  }
+
+  .catalog__head h2 {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+
+  .toolbar {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .chip {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero__lead,
+  .hero__meta {
+    font-size: 13px;
+  }
+
+  .hero__panel {
+    padding: 22px 16px;
+    min-height: 0;
+  }
+
+  .fav {
+    width: 28px;
+    height: 28px;
+    top: 8px;
+    right: 8px;
+    font-size: 12px;
+  }
+}
+
 html.is-phone .products {
-  grid-template-columns: 1fr;
-  max-width: 420px;
-  margin-inline: auto;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  max-width: none;
 }
 
 .phone-dock {
